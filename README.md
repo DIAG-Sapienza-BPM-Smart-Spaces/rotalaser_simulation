@@ -1,7 +1,7 @@
 # CardBoardSim
 Unity's HDRP to analyze cardboard's shadows
 
-Right now it's possible to:
+Right now it's possible to:  
 -dim lights 
 -move led stripes  
 -rotate led stripes ( WIP )  
