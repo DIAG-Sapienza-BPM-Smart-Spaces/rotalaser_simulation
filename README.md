@@ -20,7 +20,7 @@ There are 21 lights for each strip, so i decreased their single intensity to be 
 
 # BUG weird issue
 Once in a while, lights decide to stop work and the only way-around (a part from increase their intensity to 10M+ lumen...) is to create another scene and import the whole led & cardboard prefab.
-Right now I don't what trigger this, maybe some incorrect lights/shadows/exposure settings. 
+Right now I don't understand what trigger this, maybe some incorrect lights/shadows/exposure settings. 
 
 
 # Instructions
