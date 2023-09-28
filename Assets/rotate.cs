@@ -9,7 +9,7 @@ using TMPro;
 public class rotate : MonoBehaviour
 {   
     
-    public TMP_InputField gameObjectUp, gameObjectDown, gameObjectRight, gameObjectLeft;
+    public TMP_InputField gameObjectUp, gameObjectDown, gameObjectRight, gameObjectLeft, gameObjectHeight;
     public Slider sliderUp, sliderDown, sliderRight, sliderLeft;
     public GameObject stripUp, stripDown, stripLeft, stripRight;
 
@@ -20,14 +20,15 @@ public class rotate : MonoBehaviour
     void Start()
     {
         //textBoxUp= gameObjectUp.GetComponent<Text>();
-        /*sliderDown.value = 0;
+        sliderDown.value = 0;
         sliderUp.value = 0;
         sliderLeft.value = 0;
         sliderRight.value = 0;
         gameObjectDown.text = "0";
         gameObjectUp.text = "0";
         gameObjectLeft.text = "0";
-        gameObjectRight.text = "0";*/
+        gameObjectRight.text = "0";
+        gameObjectHeight.text = "30";
     }
 
 
@@ -35,14 +36,14 @@ public class rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        gameObjectHeight.text = Math.Floor(transform.position.y) .ToString();
         
     }
 
     public void readInputUp(){
         try{
             int temp = int.Parse(gameObjectUp.text);
-            this.stripUp.transform.rotation = Quaternion.Euler(new Vector3(temp,0,0)); 
+            stripUp.transform.localRotation = Quaternion.Euler(new Vector3(temp,0,0)); 
             Debug.Log(gameObjectUp.text);
         }              
         catch(Exception e){
@@ -52,7 +53,7 @@ public class rotate : MonoBehaviour
     public void readInputDown(){
         try{
             int temp = int.Parse(gameObjectDown.text);
-            this.stripDown.transform.rotation = Quaternion.Euler(new Vector3(temp,0,0)); 
+            stripDown.transform.rotation = Quaternion.Euler(new Vector3(temp,0,0)); 
         }
         catch(Exception e){
             gameObjectDown.text = "0";
@@ -62,7 +63,7 @@ public class rotate : MonoBehaviour
     public void readInputRight(){
         try{
             int temp = int.Parse(gameObjectRight.text);
-            this.stripRight.transform.Rotate(0,0,temp);
+            stripRight.transform.rotation = Quaternion.Euler(new Vector3(0,0,temp)); 
         }
         catch(Exception e){
             gameObjectRight.text = "0";
@@ -71,7 +72,7 @@ public class rotate : MonoBehaviour
     public void readInputLeft(){
         try{
             int temp = int.Parse(gameObjectLeft.text);
-            this.stripLeft.transform.localRotation = Quaternion.Euler(new Vector3(0,0,temp));
+            stripLeft.transform.localRotation = Quaternion.Euler(new Vector3(0,0,temp));
         }
         catch(Exception e){
             gameObjectLeft.text = "0";
@@ -79,6 +80,7 @@ public class rotate : MonoBehaviour
     }
 
 
+    //this whole piece of could should be refactored to be a single function having the textbox as input parameter...
 
     public void increaseUp(){
         int number = int.Parse(gameObjectUp.text)+10;
@@ -136,6 +138,19 @@ public class rotate : MonoBehaviour
         Debug.Log(gameObjectLeft.text);
     }
 
+    public void increaseHeight(){
+       int number = int.Parse(gameObjectHeight.text)+5;
+        
+        gameObjectHeight.text = number.ToString();
+        Debug.Log(gameObjectHeight.text);
+    }
+
+    public void decreaseHeight(){
+        int number = int.Parse(gameObjectHeight.text)-5;
+        
+        gameObjectHeight.text = number.ToString();
+        Debug.Log(gameObjectHeight.text);
+    }
 
     public void reset(){
         this.Start();
@@ -159,6 +174,18 @@ public class rotate : MonoBehaviour
         this.stripRight.transform.GetChild(0).transform.localPosition =  new Vector3(0,sliderRight.value,0);
          Debug.Log(stripRight.transform.GetChild(0).transform.localPosition);
     }
+
+
+    //this function set camera height
+    public void onChangeHeight(){
+       
+         Vector3 camPos = this.transform.position;
+        camPos.y = Int16.Parse(gameObjectHeight.text);
+
+        this.gameObject.transform.position = camPos;
+        
+    }
+
 
     
 
