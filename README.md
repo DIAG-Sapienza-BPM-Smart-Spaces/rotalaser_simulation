@@ -4,7 +4,7 @@ Unity's HDRP to analyze cardboard's shadows
 Right now it's possible to:  
 -dim lights 
 -move led stripes  
--rotate led stripes  (Some minor bugs are still there)
+-rotate led stripes  (Some minor bugs are still there)  
 -move camera around  
 -turn on/off lights 
 -adjust camera height to be at a specific distance to the cardboard  
