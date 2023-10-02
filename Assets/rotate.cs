@@ -10,8 +10,11 @@ public class rotate : MonoBehaviour
 {   
     
     public TMP_InputField gameObjectUp, gameObjectDown, gameObjectRight, gameObjectLeft, gameObjectHeight;
-    public Slider sliderUp, sliderDown, sliderRight, sliderLeft;
+    public Slider sliderUp, sliderDown, sliderRight, sliderLeft, sliderDirectionalLight;
     public GameObject stripUp, stripDown, stripLeft, stripRight;
+    public Light directionalLight;
+
+    //public light directionalLight;
 
     private float tempUp;
     //public InputField test;
@@ -43,7 +46,7 @@ public class rotate : MonoBehaviour
     public void readInputUp(){
         try{
             int temp = int.Parse(gameObjectUp.text);
-            stripUp.transform.localRotation = Quaternion.Euler(new Vector3(temp,0,0)); 
+            stripUp.transform.GetChild(0).transform.localRotation = Quaternion.Euler(new Vector3(temp,0,0)); 
             Debug.Log(gameObjectUp.text);
         }              
         catch(Exception e){
@@ -53,7 +56,7 @@ public class rotate : MonoBehaviour
     public void readInputDown(){
         try{
             int temp = int.Parse(gameObjectDown.text);
-            stripDown.transform.rotation = Quaternion.Euler(new Vector3(temp,0,0)); 
+            stripDown.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(temp,0,0)); 
         }
         catch(Exception e){
             gameObjectDown.text = "0";
@@ -63,7 +66,7 @@ public class rotate : MonoBehaviour
     public void readInputRight(){
         try{
             int temp = int.Parse(gameObjectRight.text);
-            stripRight.transform.rotation = Quaternion.Euler(new Vector3(0,0,temp)); 
+            stripRight.transform.GetChild(0).transform.rotation = Quaternion.Euler(new Vector3(0,0,temp)); 
         }
         catch(Exception e){
             gameObjectRight.text = "0";
@@ -72,7 +75,7 @@ public class rotate : MonoBehaviour
     public void readInputLeft(){
         try{
             int temp = int.Parse(gameObjectLeft.text);
-            stripLeft.transform.localRotation = Quaternion.Euler(new Vector3(0,0,temp));
+            stripLeft.transform.GetChild(0).transform.localRotation = Quaternion.Euler(new Vector3(0,0,temp));
         }
         catch(Exception e){
             gameObjectLeft.text = "0";
@@ -175,6 +178,10 @@ public class rotate : MonoBehaviour
          Debug.Log(stripRight.transform.GetChild(0).transform.localPosition);
     }
 
+
+    public void onChangeBackLight(){
+            directionalLight.intensity = sliderDirectionalLight.value;
+    }
 
     //this function set camera height
     public void onChangeHeight(){
