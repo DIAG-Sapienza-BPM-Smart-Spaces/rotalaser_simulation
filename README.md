@@ -9,7 +9,7 @@ Unity's HDRP to analyze cardboard's shadows
 
 # Instructions
   
--download everything in a folder
+-download everything in a folder  
 -open Unity Hub>Open>[that folder]  
 -(optional)open Assets>test.unity  
 
