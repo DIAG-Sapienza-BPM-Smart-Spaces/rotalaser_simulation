@@ -10,8 +10,8 @@ Unity's HDRP to analyze cardboard's shadows
 # Instructions
   
 -download everything in a folder
--open Unity Hub>Open>[that folder]
--open Assets>test.unity  
+-open Unity Hub>Open>[that folder]  
+-(optional)open Assets>test.unity  
 
 This should open the scene named "test", another similar available scene is "indoorScene.unity", but on my device lights don't work anymore.  
 First opening might require some additional time to generate lights and cache files.
